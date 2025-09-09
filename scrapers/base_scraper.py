@@ -6,6 +6,8 @@ from datetime import datetime
 from io import StringIO
 from typing import List, Optional
 
+import pandas as pd
+
 from logger import get_logger
 
 
@@ -82,3 +84,8 @@ class BaseScraper(ABC):
             writer = csv.DictWriter(csvfile, fieldnames=data[0].keys())
             writer.writeheader()
             writer.writerows(data)
+
+    @staticmethod
+    def get_tables_from_html(html_string: str) -> List[pd.DataFrame]:
+        dfrs = pd.read_html(StringIO(html_string))
+        return dfrs

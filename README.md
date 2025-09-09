@@ -19,10 +19,10 @@ python start.py [options]
 #### **Command-line Arguments**
 
 | Argument | Shorthand | Type | Description |
-| :--- | :--- | :--- | :--- |
-| `--site_domain`   | `-s` | `str` | **(Required)** The domain of the website to scrape. Currently, only `alsbm.org` is supported. |
-| `--max_items`   | `-m` | `int` | The maximum number of items to scrape. |
-| `--file_format`   | `-f` | `str` | The format for the output file. Choices are `csv` or `json`. |
+| :---------- | :--- | :--- | :--- |
+| `--site_domain` | `-s` | `str` | **(Required)** The domain of the website to scrape. Currently, only `alsbm.org` is supported. |
+| `--max_items` | `-m` | `int` | The maximum number of items to scrape. |
+| `--file_format` | `-f` | `str` | The format for the output file. Choices are `csv` or `json`. |
 
 
 #### **Example**

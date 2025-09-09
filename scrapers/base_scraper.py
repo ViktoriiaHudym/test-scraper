@@ -15,6 +15,13 @@ class BaseScraper(ABC):
     USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
 
     def __init__(self, max_items: int = 10, file_format: str = 'csv'):
+        """
+        Initialize the scraper with settings.
+
+        Args:
+        max_items (int): Maximum number of items to scrape. Defaults to 10.
+        file_format (str): Format for saving results, either 'csv' or 'json'. Defaults to 'csv'.
+        """
         self.max_items = max_items
         self.file_format = file_format
 
@@ -32,6 +39,13 @@ class BaseScraper(ABC):
         return {}
 
     def run(self) -> None:
+        """
+        Run the scraper workflow:
+            1. Generate page URLs.
+            2. Scrape items from each page.
+            3. Optionally scrape details for each item.
+            4. Save the collected results to a file.
+        """
         self.logger.info("Starting %s", self.__class__.__name__)
         scraped_items = []
 
@@ -60,6 +74,12 @@ class BaseScraper(ABC):
             self.logger.info("No items scraped")
 
     def save_to_file(self, data: List[dict]):
+        """
+        Save scraped data to a file in the specified format (CSV or JSON).
+
+        Args:
+            data (List[dict]): The list of scraped data dictionaries.
+        """
         os.makedirs("results", exist_ok=True)
         file_name = f'results/{self.__class__.__name__}_{datetime.now().strftime("%Y-%m-%d_%H-%M")}.{self.file_format}'
 
@@ -87,5 +107,13 @@ class BaseScraper(ABC):
 
     @staticmethod
     def get_tables_from_html(html_string: str) -> List[pd.DataFrame]:
+        """
+        Parse HTML content and extract tables as pandas DataFrames.
+
+        Args:
+            html_string (str): The raw HTML string containing tables.
+        Returns:
+            List[pd.DataFrame]: A list of DataFrames extracted from the HTML.
+        """
         dfrs = pd.read_html(StringIO(html_string))
         return dfrs

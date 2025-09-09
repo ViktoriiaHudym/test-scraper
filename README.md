@@ -1,13 +1,11 @@
 ### Simple scraping project
 
------
 To run the scraper, you'll need Python >= 3.10 and the required libraries. You can install them using pip:
 
 ```bash
 pip install -r requirements.txt
 ```
 
------
 
 #### **Usage**
 
@@ -17,17 +15,15 @@ To start the scraping process, run the `start.py` file from your terminal.
 python start.py [options]
 ```
 
------
 
 #### **Command-line Arguments**
 
 | Argument | Shorthand | Type | Description |
-| :--- | :--- | :--- | :--- |
+| :---------- | :--- | :--- | :--- |
 | `--site_domain` | `-s` | `str` | **(Required)** The domain of the website to scrape. Currently, only `alsbm.org` is supported. |
 | `--max_items` | `-m` | `int` | The maximum number of items to scrape. |
 | `--file_format` | `-f` | `str` | The format for the output file. Choices are `csv` or `json`. |
 
------
 
 #### **Example**
 
@@ -46,7 +42,6 @@ Example usage:
 python start.py -s alsbm.org -m 20 -sf state -sv alabama -f csv
 ```
 
------
 
 #### **Output**
 
